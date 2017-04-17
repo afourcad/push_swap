@@ -16,17 +16,18 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	=
+SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFTDIR)
+CFLAGS	= -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBINCDIR)
 LDFLAGS	= -L $(LIBFTDIR) -lft
 
 LIBFTNAM	= libft.a
 LIBFTDIR	= ./libft/
+LIBINCDIR	= ./libft/includes/
 LIBFT		= $(LIBFTNAM:%=$(LIBFTDIR)/%)
 
 INCNAM = checker.h

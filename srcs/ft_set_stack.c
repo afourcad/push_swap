@@ -18,23 +18,59 @@ t_stack	*ft_new_op(char	*str)
 {
 	t_stack	*list;
 
-	list = malloc(sizeof(*list));
-	list->nbr = ft_strdup(str);
+	if ((list = malloc(sizeof(*list))) == NULL)
+		return (NULL);
+	if ((list->nbr = ft_strdup(str)) == NULL)
+	{
+		free(list);
+		return (NULL);
+	}
 	list->next = NULL;
 	return (list);
 }
 
-void	ft_add_op(t_stack **lst, char *str)
+int		ft_add_stack(t_stack **lst, char *str)
 {
 	if (*lst == NULL)
 	{
-		*lst = ft_new_op(str);
-		return ;
+		if ((*lst = ft_new_op(str)) == NULL)
+			return (0);
+		return (1);
 	}
-	ft_add_op(&(*lst)->next, str);
+	return (ft_add_stack(&(*lst)->next, str));
 }
 
-void	ft_set_stack(t_stack **a, t_stack **b, int ac, char **av)
+int		ft_check_if_num(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (ft_isdigit(str[i]) != 1)
+			return (ft_error());
+	}
+	return (1);
+}
+
+int		ft_no_duplicate(t_stack *a, char *nbr)
+{
+	t_stack	*tmp;
+
+	tmp = a;
+	if (a->next == NULL)
+		return (1);
+	tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if ((ft_strcmp(nbr, tmp->nbr)) == 0)
+			return (ft_error());
+		tmp = tmp->next;
+	}
+	return (ft_no_duplicate(a->next, a->next->nbr));
+}
+
+int		ft_set_stack(t_stack **a, char **av)
 {
 	int		i;
 	char	**tmp;
@@ -46,10 +82,16 @@ void	ft_set_stack(t_stack **a, t_stack **b, int ac, char **av)
 		tmp = ft_strsplit(av[i], ' ');
 		while (*tmp)
 		{
-	ft_printf("%s ", *tmp);
-			ft_add_op(a, *tmp);
+			if ((ft_check_if_num(*tmp)) == 0)
+				return (0);
+			if ((ft_add_stack(a, *tmp)) == 0)
+				return (0);
 			++tmp;
 		}
 		//ft_strfree(*tmp); bug complet lololololol
 	}
+	ft_printf("%s\n", av[i]);
+	if ((ft_no_duplicate(*a, (*a)->nbr)) == 0)
+		return (0);
+	return (1);
 }
