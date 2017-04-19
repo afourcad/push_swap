@@ -39,13 +39,13 @@ int	main(int ac, char **av)
 			return (0);
 		while (a != NULL)
 		{
-			ft_printf("%s ", a->nbr);
+			ft_printf("%d ", a->nbr);
 			a = a->next;
 		}
 		ft_printf("\n");
 		while (b != NULL)
 		{
-			ft_printf("%s ", b->nbr);
+			ft_printf("%d ", b->nbr);
 			b = b->next;
 		}
 		ft_free_op(a);

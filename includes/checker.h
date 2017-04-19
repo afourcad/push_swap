@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:40:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/14 18:49:10 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:45:14 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CHECKER_H
@@ -16,7 +16,7 @@
 
 typedef struct	s_stack
 {
-	char			*nbr;
+	long			nbr;
 	struct s_stack	*next;
 }				t_stack;
 

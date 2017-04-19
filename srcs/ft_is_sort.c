@@ -26,7 +26,7 @@ int	ft_is_sort(t_stack *a, t_stack *b)
 		tmp = tmp->next;
 		while (tmp)
 		{
-			if (ft_atoi(a->nbr) > ft_atoi(tmp->nbr))
+			if (a->nbr > tmp->nbr)
 				return (ft_write_sort(ERROR));
 			tmp = tmp->next;
 			a = a->next;

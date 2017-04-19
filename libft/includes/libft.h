@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:55:49 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/14 18:44:12 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:53:15 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -85,7 +86,7 @@ char				*ft_strndup(const char *s, size_t n);
 **Travail sur des nombres.
 */
 
-int					ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);

@@ -6,16 +6,16 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:43:51 by afourcad          #+#    #+#             */
-/*   Updated: 2017/02/13 18:54:01 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:50:52 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	unsigned int	i;
-	int				nbr;
+	long			nbr;
 	int				is_neg;
 
 	i = 0;
