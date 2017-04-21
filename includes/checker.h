@@ -6,28 +6,38 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:40:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/19 16:45:14 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:19:02 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# define HEAD "head"
+# define HEAD a
 
 typedef struct	s_stack
 {
 	long			nbr;
+	struct s_stack	*prev;
 	struct s_stack	*next;
 }				t_stack;
 
-int		ft_set_stack(t_stack **a, char **av);
-int		ft_add_stack(t_stack **op, char *str);
+typedef	struct	s_head
+{
+	t_stack	*beg;
+	t_stack	*end;
+	int		size;
+}				t_head;
+
+int		ft_set_stack(t_head **a, t_head **b, char **av);
+int		ft_add_stack(t_head *head, char *str);
 void	ft_swap(t_stack **lst1, t_stack **lst2);
 void	ft_push(t_stack **lst1, t_stack **lst2);
 void	ft_rotate(t_stack **lst1, t_stack **lst2);
 void	ft_r_rotate(t_stack **lst1, t_stack **lst2);
 int		ft_do_opperations(t_stack **a, t_stack **b, char *tab);
 int		ft_error(void);
-int		ft_is_sort(t_stack *a, t_stack *b);
+int		ft_is_sort(t_head *a, t_head *b);
+char	*ft_find_flags(char *str);
+void	ft_free_op(t_stack *param);
 
 #endif

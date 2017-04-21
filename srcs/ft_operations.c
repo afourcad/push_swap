@@ -2,34 +2,37 @@
 #include "checker.h"
 #include "ft_printf.h"
 
-void	ft_swap(t_stack **lst1, t_stack **lst2)
+void	ft_swap(t_head *lst1, t_head *lst2)
 {
 	t_stack	*tmp;
 
 	tmp = NULL;
-	if (lst1)
-		if ((*lst1)->next)
+	if (lst1->beg)
+		if (lst1->beg->next)
 		{
-			tmp = *lst1;
-			*lst1 = (*lst1)->next;
-			tmp->next = (*lst1)->next;
-			(*lst1)->next = tmp;
+			tmp = lst1->beg->next;
+			lst1->beg->next = tmp->next;
+			tmp->next = lst1->beg;
+			lst1->beg = tmp;
+			lst1->beg->next->next->prev = lst1->beg->next;
+			lst1>beg->next->prev = lst1->beg;
+			lst!->beg->prev = lst1->end;
 		}
 	if (lst2)
 		ft_swap(lst2, NULL);
 }
 
-void	ft_push(t_stack **lst1, t_stack **lst2)
+void	ft_push(t_stack *lst1, t_stack *lst2)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
 
 	tmp1 = NULL;
 	tmp2 = NULL;
-	if (lst1 && lst2)
+	if (lst1->beg)
 		if (*lst1)
 		{
-			tmp1 = *lst1;
+			tmp1 = lst1->beg;
 			*lst1 = (*lst1)->next;
 			tmp2 = *lst2;
 			*lst2 = tmp1;
@@ -83,7 +86,7 @@ void	ft_r_rotate(t_stack **lst1, t_stack **lst2)
 		ft_r_rotate(lst2, NULL);
 }
 
-int		ft_do_opperations(t_stack **a, t_stack **b, char *tab)
+int		ft_do_opperations(t_head *a, t_head *b, char *tab)
 {
 	if ((ft_strcmp(tab, "sa")) == 0)
 		ft_swap(a, NULL);

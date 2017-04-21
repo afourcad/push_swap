@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:27:39 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/19 17:00:15 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:10:54 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,33 @@
 #include "checker.h"
 #include "ft_printf.h"
 
-t_stack	*ft_new_op(long	nbr)
+int		ft_add_stack(t_head *head, char *str)
 {
-	t_stack	*list;
+	t_stack	*elem;
+	t_stack	*tmp;
 
-	if ((list = malloc(sizeof(*list))) == NULL)
-		return (NULL);
-	list->nbr = nbr;
-	list->next = NULL;
-	return (list);
+	if ((elem = malloc(sizeof(*elem))) == NULL)
+		return (-1);
+	tmp = head->end;
+	tmp->next = elem;
+	head->end = elem;
+	elem->prev =  tmp;
+	elem->next = head->beg;
+	elem->nbr = ft_atoi(str);
+	return(1);
 }
 
-int		ft_add_stack(t_stack **lst, char *str)
+void	ft_init_stack(t_head *a, char *nbr)
 {
-	if (*lst == NULL)
-	{
-		if ((*lst = ft_new_op(ft_atoi(str))) == NULL)
-			return (0);
-		return (1);
-	}
-	return (ft_add_stack(&(*lst)->next, str));
+	t_stack	*elem;
+
+	elem = malloc(sizeof(*elem));
+	a->beg = elem;
+	a->end = elem;
+	elem->next = elem;
+	elem->prev = elem;
+	if (nbr)
+		elem->nbr = ft_atoi(nbr);
 }
 
 int		ft_check_if_num(char *str)
@@ -55,46 +62,62 @@ int		ft_check_if_num(char *str)
 	return (1);
 }
 
-int		ft_no_duplicate(t_stack *a, long nbr)
+int		ft_no_duplicate(t_head *head, long nbr)
 {
 	t_stack	*tmp;
 
-	tmp = a;
-	if (a->next == NULL)
+	tmp = head->beg;
+	if (tmp->next == head->end)
 		return (1);
 	tmp = tmp->next;
 	if (nbr < INT_MIN || nbr > INT_MAX)
 		return (ft_error());
-	while (tmp != NULL)
+	while (tmp != head->end)
 	{
-		if (nbr  == tmp->nbr || tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
+		if (nbr == tmp->nbr || tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
 			return (ft_error());
 		tmp = tmp->next;
 	}
-	return (ft_no_duplicate(a->next, a->next->nbr));
+	return (ft_no_duplicate(head, tmp->next->nbr));
 }
 
-int		ft_set_stack(t_stack **a, char **av)
+void	ft_init_head(t_head **a, t_head **b)
+{
+	*a = malloc(sizeof(t_head));
+	*b = malloc(sizeof(t_head));
+	(*a)->end = NULL;
+	(*a)->beg = NULL;
+	(*b)->end = NULL;
+	(*b)->beg = NULL;
+}
+
+int		ft_set_stack(t_head **a, t_head **b, char **av)
 {
 	int		i;
 	char	**tmp;
 
 	i = 0;
 	tmp = NULL;
+	ft_init_head(a, b);
 	while (av[++i])
 	{
 		tmp = ft_strsplit(av[i], ' ');
+		if ((*a)->end ==  NULL)
+		{
+			ft_init_stack(*a, *tmp);
+			++tmp;
+		}
 		while (*tmp)
 		{
 			if ((ft_check_if_num(*tmp)) == 0)
 				return (0);
-			if ((ft_add_stack(a, *tmp)) == 0)
+			if ((ft_add_stack(*a, *tmp)) == 0)
 				return (0);
 			++tmp;
 		}
 		//ft_strfree(*tmp); bug complet lololololol
 	}
-	if ((ft_no_duplicate(*a, (*a)->nbr)) == 0)
+	if ((ft_no_duplicate(*a, (*a)->beg->nbr)) == 0)
 		return (0);
 	return (1);
 }

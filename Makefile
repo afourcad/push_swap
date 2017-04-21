@@ -6,7 +6,7 @@
 #    By: afourcad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 20:03:40 by afourcad          #+#    #+#              #
-#    Updated: 2016/12/01 16:04:17 by jebossue         ###   ########.fr        #
+#    Updated: 2017/04/21 19:15:20 by afourcad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c
+SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c push_swap.c\
+		  ft_error_free.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

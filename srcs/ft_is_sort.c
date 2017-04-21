@@ -14,23 +14,22 @@ int	ft_write_sort(int i)
 		return (1);
 }
 
-int	ft_is_sort(t_stack *a, t_stack *b)
+int	ft_is_sort(t_head *a, t_head *b)
 {
 	t_stack	*tmp;
 
-	tmp = a;
-	if (b != NULL)
+	tmp = a->beg;
+	if (b->beg != NULL)
 		return (ft_write_sort(ERROR));
-	if (a != NULL)
+	if (a->beg != NULL)
 	{
-		tmp = tmp->next;
-		while (tmp)
+		while (tmp != a->end)
 		{
-			if (a->nbr > tmp->nbr)
+			if (tmp->nbr > tmp->next->nbr)
 				return (ft_write_sort(ERROR));
 			tmp = tmp->next;
-			a = a->next;
 		}
+		tmp = tmp->next;
 	}
 	return (ft_write_sort(GOOD));
 }
