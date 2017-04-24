@@ -15,7 +15,7 @@
 
 # include "libft.h"
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 100
 # define EOL '\n'
 
 typedef struct	s_buff

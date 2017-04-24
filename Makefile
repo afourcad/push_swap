@@ -16,7 +16,7 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c push_swap.c\
+SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c \
 		  ft_error_free.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)

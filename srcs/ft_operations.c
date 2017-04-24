@@ -7,81 +7,60 @@ void	ft_swap(t_head *lst1, t_head *lst2)
 	t_stack	*tmp;
 
 	tmp = NULL;
-	if (lst1->beg)
-		if (lst1->beg->next)
-		{
-			tmp = lst1->beg->next;
-			lst1->beg->next = tmp->next;
-			tmp->next = lst1->beg;
-			lst1->beg = tmp;
-			lst1->beg->next->next->prev = lst1->beg->next;
-			lst1>beg->next->prev = lst1->beg;
-			lst!->beg->prev = lst1->end;
-		}
+	if (lst1->beg && lst1->beg != lst1->end)
+	{
+		tmp = lst1->beg->next;
+		lst1->beg->next = tmp->next;
+		tmp->next = lst1->beg;
+		lst1->beg = tmp;
+		lst1->beg->next->next->prev = lst1->beg->next;
+		lst1->beg->next->prev = lst1->beg;
+		lst1->beg->prev = lst1->end;
+	}
 	if (lst2)
 		ft_swap(lst2, NULL);
 }
 
-void	ft_push(t_stack *lst1, t_stack *lst2)
-{
-	t_stack	*tmp1;
-	t_stack	*tmp2;
-
-	tmp1 = NULL;
-	tmp2 = NULL;
-	if (lst1->beg)
-		if (*lst1)
-		{
-			tmp1 = lst1->beg;
-			*lst1 = (*lst1)->next;
-			tmp2 = *lst2;
-			*lst2 = tmp1;
-			tmp1->next = tmp2;
-		}
-}
-
-void	ft_rotate(t_stack **lst1, t_stack **lst2)
+void	ft_push(t_head *lst1, t_head *lst2)
 {
 	t_stack	*tmp;
-	t_stack	*tmp2;
 
 	tmp = NULL;
-	tmp2 =NULL;
-	if (lst1)
-		if (*lst1 && (*lst1)->next)
-		{
-			tmp = *lst1;
-			*lst1 = tmp->next;
-			tmp->next = NULL;
-			tmp2 = *lst1;
-			while (tmp2->next)
-				tmp2 = tmp2->next;
-			tmp2->next = tmp;
-		}
+	if (lst1->beg)
+	{
+		tmp = lst1->beg->next;
+		lst1->beg->next = lst2->beg == NULL ? tmp : lst2->beg;
+		lst2->beg = lst1->beg;
+		lst1->beg = lst1->beg == tmp ? NULL : tmp;
+		lst2->beg->prev = lst2->end == NULL ? tmp : lst2->end;
+		lst2->beg->next->prev = lst2->beg;
+		--lst2->end->next = lst2->beg;
+		lst1->beg->prev = lst1->end;
+		lst1->beg->next->prev = lst1->beg;
+		lst1->end->next = lst1->end;
+	write(1, "yo\n", 3);
+		lst1->end = lst1->end == tmp ? NULL : lst1->end;
+	}
+}
+
+void	ft_rotate(t_head *lst1, t_head *lst2)
+{
+	if (lst1->beg && lst1->beg != lst1->end)
+	{
+		lst1->beg = lst1->beg->next;
+		lst1->end  = lst1->end->prev;
+	}
 	if (lst2)
 		ft_rotate(lst2, NULL);
 }
 
-void	ft_r_rotate(t_stack **lst1, t_stack **lst2)
+void	ft_r_rotate(t_head *lst1, t_head *lst2)
 {
-	t_stack	*tmp1;
-	t_stack	*tmp2;
-
-	tmp1 = NULL;
-	tmp2 = NULL;
-	if (lst1)
-		if (*lst1 && (*lst1)->next)
-		{
-			tmp1 = *lst1;
-			tmp2 = *lst1;
-			while (tmp2->next)
-				tmp2 = tmp2->next;
-			*lst1 = tmp2;
-			tmp2->next = tmp1;
-			while (tmp1->next != tmp2)
-				tmp1 = tmp1->next;
-			tmp1->next = NULL;
-		}
+	if (lst1->beg && lst1->beg != lst1->end)
+	{
+		lst1->beg = lst1->end;
+		lst1->end = lst1->end->next;
+	}
 	if (lst2)
 		ft_r_rotate(lst2, NULL);
 }

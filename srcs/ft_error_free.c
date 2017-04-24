@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
 #include "checker.h"
+#include "push_swap.h"
 
 void	ft_free_op(t_stack *param)
 {
@@ -30,10 +32,10 @@ int		ft_error(void)
 char	*ft_find_flags(char *str)
 {
 	int		i;
-	char	flags[2];
+	char	*flags;
 
 	i = 0;
-	ft_bzero(flags, 3);
+	flags = ft_strnew(2);
 	if (str[i] == '-')
 		while (str[++i])
 		{

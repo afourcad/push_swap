@@ -62,23 +62,26 @@ int		ft_check_if_num(char *str)
 	return (1);
 }
 
-int		ft_no_duplicate(t_head *head, long nbr)
+int		ft_no_duplicate(t_head *head)
 {
 	t_stack	*tmp;
 
 	tmp = head->beg;
-	if (tmp->next == head->end)
+	if (head->beg == head->end)
 		return (1);
-	tmp = tmp->next;
-	if (nbr < INT_MIN || nbr > INT_MAX)
+	if (tmp->nbr < INT_MIN || tmp->nbr > INT_MAX)
 		return (ft_error());
-	while (tmp != head->end)
+	tmp = tmp->next;
+	while (tmp)
 	{
-		if (nbr == tmp->nbr || tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
+		if (tmp->nbr == tmp->prev->nbr
+				|| tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
 			return (ft_error());
 		tmp = tmp->next;
+		if (tmp == head->end)
+			break;
 	}
-	return (ft_no_duplicate(head, tmp->next->nbr));
+	return (1);
 }
 
 void	ft_init_head(t_head **a, t_head **b)
@@ -117,7 +120,7 @@ int		ft_set_stack(t_head **a, t_head **b, char **av)
 		}
 		//ft_strfree(*tmp); bug complet lololololol
 	}
-	if ((ft_no_duplicate(*a, (*a)->beg->nbr)) == 0)
+	if (ft_no_duplicate(*a) == 0)
 		return (0);
 	return (1);
 }
