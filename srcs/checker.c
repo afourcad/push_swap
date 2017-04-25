@@ -65,14 +65,14 @@ int	main(int ac, char **av)
 		}
 		if ((ft_is_sort(a, b)) == ERROR)
 		{
+			ft_write_sort(ERROR);
 			ft_afficher(a, b);
+			ft_free_op(&a, &b);
 			return (0);
 		}
-		else
-			ft_afficher(a, b);
-		//ft_free_op(a);
-		//ft_free_op(b);
+		ft_write_sort(ERROR);
+		ft_afficher(a, b);
+		ft_free_op(&a, &b);
 	}
 	return (0);
-
 }

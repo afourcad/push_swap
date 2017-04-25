@@ -15,12 +15,27 @@
 #include "checker.h"
 #include "push_swap.h"
 
-void	ft_free_op(t_stack *param)
+void	ft_free_op(t_head **a, t_head **b)
 {
-	if (param == NULL)
-		return ;
-	ft_free_op(param->next);
-	free(param);
+	t_stack	*tmp;
+
+	tmp = (*a)->beg;
+	while (tmp)
+	{
+		if (tmp->next != (*a)->beg)
+		{
+			tmp = tmp->next;
+			free (tmp->prev);
+		}
+		else
+		{
+			free(tmp);
+			break;
+		}
+	}
+	free(a);
+	if (b)
+		ft_free_op(b, NULL);
 }
 
 int		ft_error(void)

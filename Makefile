@@ -10,14 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= checker
+NAME1	= checker
+NAME2	= push_swap
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c main.c \
-		  ft_error_free.c
+SRCNAM	= checker.c push_swap.c ft_operations.c ft_set_stack.c ft_is_sort.c \
+		  ft_error_free.c ft_find_operations.c \
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
@@ -36,9 +37,12 @@ INC = $(INCNAM:%=$(INCDIR)/%)
 
 GIT	= README.md
 
-all: $(NAME)
+all: $(NAME1) $(NAME2)
 
-$(NAME): $(OBJ)
+$(NAME1): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+$(NAME2): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 $(LIBFT):

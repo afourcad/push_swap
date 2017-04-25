@@ -16,4 +16,11 @@
 # define FLG_V flags[0]
 # define FLG_C flags[1]
 
+# define AA a->beg->nbr
+# define AB a->beg->next->nbr
+# define AZ a->end->nbr
+# define BA b->beg->nbr
+# define BB b->beg->next->nbr
+# define BZ b->end->nbr
+
 #endif
