@@ -26,10 +26,10 @@ int	ft_is_sort(t_head *a, t_head *b)
 		while (tmp != a->end)
 		{
 			if (tmp->nbr > tmp->next->nbr)
-				return (ERROR);
+				return (ft_write_sort(ERROR));
 			tmp = tmp->next;
 		}
 		tmp = tmp->next;
 	}
-	return (GOOD);
+	return (ft_write_sort(GOOD));
 }

@@ -50,8 +50,10 @@ char	*ft_find_flags(char *str)
 	char	*flags;
 
 	i = 0;
-	flags = ft_strnew(2);
+	flags = NULL;
 	if (str[i] == '-')
+	{
+	flags = ft_strnew(2);
 		while (str[++i])
 		{
 			if (str[i] == 'v')
@@ -64,6 +66,7 @@ char	*ft_find_flags(char *str)
 				return (NULL);
 			}
 		}
+	}
 	return (flags);
 }
 

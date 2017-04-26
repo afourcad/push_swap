@@ -10,15 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME1	= checker
+NAME	= checker
 NAME2	= push_swap
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= checker.c push_swap.c ft_operations.c ft_set_stack.c ft_is_sort.c \
-		  ft_error_free.c ft_find_operations.c \
+SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c \
+		  ft_error_free.c ft_find_operations.c\
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
@@ -32,18 +32,20 @@ LIBFTDIR	= ./libft/
 LIBINCDIR	= ./libft/includes/
 LIBFT		= $(LIBFTNAM:%=$(LIBFTDIR)/%)
 
-INCNAM = checker.h
+INCNAM = checker.h push_swap.h
 INC = $(INCNAM:%=$(INCDIR)/%)
 
 GIT	= README.md
 
-all: $(NAME1) $(NAME2)
+all: $(NAME) $(NAME2)
 
-$(NAME1): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+$(NAME): $(OBJ)
+	$(CC) -o objs/checker.o -c srcs/checker.c $(CFLAGS)
+	$(CC) -o $@ objs/checker.o $^ $(LDFLAGS)
 
 $(NAME2): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o objs/push_swap.o -c srcs/push_swap.c $(CFLAGS)
+	$(CC) -o $@ objs/push_swap.o $^ $(LDFLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
