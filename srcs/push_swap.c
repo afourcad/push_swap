@@ -16,6 +16,30 @@
 #include "checker.h"
 #include "push_swap.h"
 
+void	ft_afficher(t_head *a, t_head *b)
+{
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	tmp_a = a->beg;
+	tmp_b = b->beg;
+	while (tmp_a)
+	{
+		ft_printf("%d ", tmp_a->nbr);
+		if (tmp_a == a->end)
+			break;
+		tmp_a = tmp_a->next;
+	}
+	ft_printf("\n");
+	while (tmp_b)
+	{
+		ft_printf("%d ", tmp_b->nbr);
+		if (tmp_b == b->end)
+			break;
+		tmp_b = tmp_b->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	char	*flags;

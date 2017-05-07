@@ -4,18 +4,23 @@
 
 void	ft_swap(t_head *lst1, t_head *lst2)
 {
-	t_stack	*tmp;
-
-	tmp = NULL;
 	if (lst1->beg && lst1->beg != lst1->end)
 	{
-		tmp = lst1->beg->next;
-		lst1->beg->next = tmp->next;
-		tmp->next = lst1->beg;
-		lst1->beg = tmp;
-		lst1->beg->next->next->prev = lst1->beg->next;
-		lst1->beg->next->prev = lst1->beg;
-		lst1->beg->prev = lst1->end;
+		if (lst1->end->next == lst1->beg)
+		{
+			lst1->beg = lst1->end;
+			lst1->end = lst1->end->next;
+		}
+		else
+		{
+			lst1->beg = lst1->beg->next;
+			lst1->end->next->next = lst1->beg->next;
+			lst1->beg->next->prev = lst1->end->next;
+			lst1->end->next = lst1->beg;
+			lst1->beg->next = lst1->beg->prev;
+			lst1->beg->prev = lst1->end;
+			lst1->beg->next->prev = lst1->beg;
+		}
 	}
 	if (lst2)
 		ft_swap(lst2, NULL);
