@@ -43,32 +43,30 @@ void	ft_afficher(t_head *a, t_head *b)
 int	main(int ac, char **av)
 {
 	char	*tab;
-	char	*flags;
 	t_head	*a;
 	t_head	*b;
 
 	tab = NULL;
 	a = NULL;
 	b = NULL;
-	flags = NULL;
 	if (ac > 1)
 	{
-		if ((flags = ft_find_flags(av[1])) != NULL)
-			++av;
 		if ((ft_set_stack(&a, &b, av)) == 0)
 			return (0);
 		while (get_next_line(0, &tab) > 0)
 		{
-			if ((ft_do_opperations(a, b, tab)) == 0)
+			if ((ft_do_opperations(a, b, tab, 0)) == 0)
 				return (0);
-				free(tab);
+			free(tab);
 		}
 		if ((ft_is_sort(a, b)) == ERROR)
 		{
+			ft_write_sort(ERROR);
 			ft_afficher(a, b);
 			//ft_free_op(&a, &b);
 			return (0);
 		}
+		ft_write_sort(GOOD);
 		ft_afficher(a, b);
 		//ft_free_op(&a, &b);
 	}

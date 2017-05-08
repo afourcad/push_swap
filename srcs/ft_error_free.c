@@ -17,23 +17,13 @@
 
 void	ft_free_op(t_head **a, t_head **b)
 {
-	t_stack	*tmp;
-
-	tmp = (*a)->beg;
-	while (tmp)
+	while ((*a)->beg != (*a)->end)
 	{
-		if (tmp->next != (*a)->beg)
-		{
-			tmp = tmp->next;
-			free (tmp->prev);
-		}
-		else
-		{
-			free(tmp);
-			break;
-		}
+		(*a)->beg = (*a)->beg->next;
+		free((*a)->beg->prev);
 	}
-	free(a);
+	free((*a)->beg);
+	free(*a);
 	if (b)
 		ft_free_op(b, NULL);
 }

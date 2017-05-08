@@ -17,16 +17,16 @@
 int		ft_add_stack(t_head *head, char *str)
 {
 	t_stack	*elem;
-	t_stack	*tmp;
 
 	if ((elem = malloc(sizeof(*elem))) == NULL)
 		return (-1);
-	tmp = head->end;
-	tmp->next = elem;
+	head->end->next = elem;
+	elem->prev = head->end;
 	head->end = elem;
-	elem->prev =  tmp;
-	elem->next = head->beg;
-	elem->nbr = ft_atoi(str);
+	head->beg->prev = head->end;
+	head->end->next = head->beg;
+	if (str)
+		elem->nbr = ft_atoi(str);
 	return(1);
 }
 

@@ -23,6 +23,7 @@ void	ft_afficher(t_head *a, t_head *b)
 
 	tmp_a = a->beg;
 	tmp_b = b->beg;
+	ft_printf(RED"Stack A: "EOC);
 	while (tmp_a)
 	{
 		ft_printf("%d ", tmp_a->nbr);
@@ -31,6 +32,7 @@ void	ft_afficher(t_head *a, t_head *b)
 		tmp_a = tmp_a->next;
 	}
 	ft_printf("\n");
+	ft_printf(RED"Stack B: "EOC);
 	while (tmp_b)
 	{
 		ft_printf("%d ", tmp_b->nbr);
@@ -38,6 +40,7 @@ void	ft_afficher(t_head *a, t_head *b)
 			break;
 		tmp_b = tmp_b->next;
 	}
+	ft_printf("\n\n");
 }
 
 int	main(int ac, char **av)
@@ -59,11 +62,9 @@ int	main(int ac, char **av)
 			;
 		if ((ft_is_sort(a, b)) == ERROR)
 		{
-			ft_afficher(a, b);
 			ft_free_op(&a, &b);
 			return (0);
 		}
-		ft_afficher(a, b);
 		ft_free_op(&a, &b);
 	}
 	return (0);

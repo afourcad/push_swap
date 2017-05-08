@@ -20,16 +20,16 @@ int	ft_is_sort(t_head *a, t_head *b)
 
 	tmp = a->beg;
 	if (b->beg != NULL)
-		return (ft_write_sort(ERROR));
+		return (ERROR);
 	if (a->beg != NULL)
 	{
 		while (tmp != a->end)
 		{
 			if (tmp->nbr > tmp->next->nbr)
-				return (ft_write_sort(ERROR));
+				return (ERROR);
 			tmp = tmp->next;
 		}
 		tmp = tmp->next;
 	}
-	return (ft_write_sort(GOOD));
+	return (GOOD);
 }

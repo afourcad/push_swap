@@ -21,53 +21,51 @@ int	ft_only_pa(t_head *a, t_head *b, char *flags)
 	while (b->beg != NULL)
 	{
 		if (A2 > B2 || b->beg == b->end)
-			ft_do_opperations(a, b, "pa");
+			ft_do_opperations(a, b, "pa", 1);
 		else
-			ft_do_opperations(a, b, "sb");
-		ft_afficher(a, b);
+			ft_do_opperations(a, b, "sb", 1);
+		if (flags && FLG_V)
+			ft_afficher(a, b);
 	}
 	return (ERROR);
 }
 int	ft_find_operations(t_head *a, t_head *b, char *flags)
 {
-	(void)flags;
 	if (ft_is_sort(a, b) == GOOD)
 		return (GOOD);
 	if (a->beg == NULL || a->beg == a->end)
-		ft_only_pa(a, b, flags);
-	else if (A1 < B1 && (b->beg == NULL || b->beg == b->end || A2 > B2))
+		return(ft_only_pa(a, b, flags));
+	else if (A1 < B1)
 	{
 		if (A1 < Z1)
 		{
 			if (b->beg == NULL || b->beg == b->end || A2 > Z2)
-			{
-				ft_do_opperations(a, b, "pb");
-				}
+				ft_do_opperations(a, b, "pb", 1);
 			else if (A2 < Z2)
-				ft_do_opperations(a, b, "rrb");
+				ft_do_opperations(a, b, "rrb", 1);
 			else
-				ft_do_opperations(a, b, "sb");
+				ft_do_opperations(a, b, "sb", 1);
 		}
 		else if (A1 > Z1)
 		{
-			if (b->beg == NULL || A2 > Z2)
-				ft_do_opperations(a, b, "rra");
+			if (b->beg == NULL || b->beg == b->end || A2 > Z2)
+				ft_do_opperations(a, b, "rra", 1);
 			else if (A2 < Z2)
-				ft_do_opperations(a, b, "rrr");
+				ft_do_opperations(a, b, "rrr", 1);
 			else
-				ft_do_opperations(a, b, "sb");
+				ft_do_opperations(a, b, "sb", 1);
 		}
 	}
 	else if (A1 > B1)
 	{
 		if (b->beg == NULL || A2 > B2)
 		{
-			ft_do_opperations(a, b, "sa");
+			ft_do_opperations(a, b, "sa", 1);
 			}
 		else
-			ft_do_opperations(a, b, "ss");
+			ft_do_opperations(a, b, "ss", 1);
 	}
-	ft_afficher(a,b);
-	ft_printf("\n");
+	if (flags && FLG_V)
+		ft_afficher(a,b);
 	return (ERROR);
 }
