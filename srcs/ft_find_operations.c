@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 16:53:02 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/20 17:21:11 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/05/11 18:07:53 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_only_pa(t_head *a, t_head *b, char *flags)
 	}
 	return (ERROR);
 }
+
 int	ft_find_operations(t_head *a, t_head *b, char *flags)
 {
 	if (ft_is_sort(a, b) == GOOD)

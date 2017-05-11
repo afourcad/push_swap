@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 16:15:23 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/21 17:00:50 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/05/11 17:15:31 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_afficher(t_head *a, t_head *b)
 
 	tmp_a = a->beg;
 	tmp_b = b->beg;
-	ft_printf(RED"Stack A: "EOC);
+	ft_printf(`RED"Stack A: "EOC);
 	while (tmp_a)
 	{
 		ft_printf("%d ", tmp_a->nbr);
@@ -60,11 +60,6 @@ int	main(int ac, char **av)
 			return (0);
 		while ((ft_find_operations(a, b, flags)) == ERROR)
 			;
-		if ((ft_is_sort(a, b)) == ERROR)
-		{
-			ft_free_op(&a, &b);
-			return (0);
-		}
 		ft_free_op(&a, &b);
 	}
 	return (0);
