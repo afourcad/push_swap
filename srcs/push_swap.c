@@ -20,24 +20,23 @@ void	ft_afficher(t_head *a, t_head *b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
+	int		i;
 
 	tmp_a = a->beg;
 	tmp_b = b->beg;
-	ft_printf(`RED"Stack A: "EOC);
-	while (tmp_a)
+	i = 0;
+	ft_printf(RED"Stack A: "EOC);
+	while (i++ < a->size)
 	{
 		ft_printf("%d ", tmp_a->nbr);
-		if (tmp_a == a->end)
-			break;
 		tmp_a = tmp_a->next;
 	}
+	i = 0;
 	ft_printf("\n");
 	ft_printf(RED"Stack B: "EOC);
-	while (tmp_b)
+	while (i++ < b->size)
 	{
 		ft_printf("%d ", tmp_b->nbr);
-		if (tmp_b == b->end)
-			break;
 		tmp_b = tmp_b->next;
 	}
 	ft_printf("\n\n");
@@ -58,7 +57,7 @@ int	main(int ac, char **av)
 			++av;
 		if ((ft_set_stack(&a, &b, av)) == 0)
 			return (0);
-		while ((ft_find_operations(a, b, flags)) == ERROR)
+		while ((ft_find_operations2(a, b, flags)) == ERROR)
 			;
 		ft_free_op(&a, &b);
 	}

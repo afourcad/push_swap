@@ -12,69 +12,91 @@
 #include "libft.h"
 #include "checker.h"
 #include "push_swap.h"
+#include "ft_printf.h"
 
-int		ft_back_or_for(t_head *a, int min[1])
+int		ft_back_or_for(t_head *a, t_min *min)
 {
-	int		forw;
-	int		back;
-	t_stack *tmp_f;
-	t_stack	*tmp_b;
+	int		m;
+	int		n;
+	int		i;
+	t_stack *tmp;
 
-	forw = 0;
-	back = 0;
-	tmp_f = a->beg;
-	tmp_b = a->beg;
-	while (tmp_f->next != a->beg && tmp_b->prev != a->beg)
-	{
-		if (tmp_f->nbr != min[0] && tmp_f->nbr != min[1])
-			++forw;
-		else
-			return (forw);
-		if (tmp_b->nbr != min[0] && tmp_b->nbr != min[1])
-			--back;
-		else
-			return (back);
-		tmp_f = tmp_f->next;
-		tmp_b = tmp_b->prev;
-	}
-	return (0);
-}
-
-void	ft_find_min(t_head *a, int min[1])
-{
-	t_stack	*tmp;
-
+	m = 0;
+	n = 0;
+	i = 0;
 	tmp = a->beg;
-	min[0] = tmp->nbr;
-	min[1] = tmp->next->nbr;
-	while (tmp->next != a->beg)
+	while (i++ < a->size)
 	{
-		if (tmp->nbr < min[0])
-			min[0] = tmp->nbr;
-		if (tmp->nbr > min[0] && tmp->nbr < min[1])
-			min[1] = tmp->nbr;
+		if (tmp->nbr == min->min)
+			break;
+		++m;
 		tmp = tmp->next;
 	}
+	i = 0;
+	tmp = a->beg;
+	while (i++ < a->size)
+	{
+		if (tmp->nbr == min->next)
+			break;
+		++n;
+		tmp = tmp->next;
+	}
+	m = m > (a->size / 2) ? m - a->size : m;
+	n = n > (a->size / 2) ? n - a->size : n;
+	min->is_next = abs(n) < abs(m) ? 1 : 0;
+	return (abs(m) < abs(n) ? m : n);
+}
+
+void	ft_find_min(t_head *a, t_min *min)
+{
+	t_stack	*tmp;
+	int		i;
+
+	tmp = a->beg;
+	i = 0;
+	if (!min->is_min && min->is_next)
+		min->min = min->next;
+	min->min = tmp->nbr;
+	min->next = tmp->nbr;
+	min->is_min = 1;
+	min->is_next = 1;
+	while (i++ < a->size)
+	{
+		if (tmp->nbr < min->min)
+			min->min = tmp->nbr;
+		if (tmp->nbr > min->min
+				&& (tmp->nbr < min->next || min->next == min->min))
+			min->next = tmp->nbr;
+		tmp = tmp->next;
+	}
+	if (min->min == min->next)
+		min->is_next = 0;
+	ft_printf("min: %d et next: %d\n", min->min, min->next);
 }
 
 int		ft_find_operations2(t_head *a, t_head *b, char *flags)
 {
-	int	min[1];
-	int	goal;
+	static t_min	min;
+	int				goal;
 
-	ft_find_min(a, min);
-	goal = ft_back_or_for(a, min);
+	(void)flags;
+	if (min.is_next != 0 && min.is_min != 1)
+		ft_find_min(a, &min);
+	goal = ft_back_or_for(a, &min);
 	if (goal-- == 1)
-		ft_do_opperations(a, b, "sa");
+		ft_do_opperations(a, b, "sa", 1);
 	if (goal > 0)
 		while (goal-- > 0)
-			ft_do_opperations(a, b, "ra");
+			ft_do_opperations(a, b, "ra", 1);
 	else if (goal < 0)
-		while (goal-- < 0)
-			ft_do_opperations(a, b, "rra");
+		while (goal++ < 0)
+			ft_do_opperations(a, b, "rra", 1);
 	if (goal == 0 && ft_is_sort(a, NULL) != GOOD)
-		ft_do_opperations(a, b, "pb");
-	if (ft_is_sort(a, b) == GOODD)
+		ft_do_opperations(a, b, "pb", 1);
+	else
+		ft_only_pa(a, b, flags);
+	if (ft_is_sort(a, b) == GOOD)
 		return (GOOD);
+		ft_afficher(a, b);
 	return (ERROR);
 }

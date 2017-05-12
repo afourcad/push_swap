@@ -27,6 +27,7 @@ int		ft_add_stack(t_head *head, char *str)
 	head->end->next = head->beg;
 	if (str)
 		elem->nbr = ft_atoi(str);
+	head->size += 1;
 	return(1);
 }
 
@@ -41,6 +42,7 @@ void	ft_init_stack(t_head *a, char *nbr)
 	elem->prev = elem;
 	if (nbr)
 		elem->nbr = ft_atoi(nbr);
+	a->size = 1;
 }
 
 int		ft_check_if_num(char *str)
@@ -92,6 +94,8 @@ void	ft_init_head(t_head **a, t_head **b)
 	(*a)->beg = NULL;
 	(*b)->end = NULL;
 	(*b)->beg = NULL;
+	(*a)->size = 0;
+	(*b)->size = 0;
 }
 
 int		ft_set_stack(t_head **a, t_head **b, char **av)

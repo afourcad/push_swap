@@ -14,6 +14,7 @@
 #include "ft_printf.h"
 #include "get_next_line.h"
 #include "checker.h"
+#include "gnl.h"
 
 
 void	ft_afficher(t_head *a, t_head *b)
@@ -23,6 +24,7 @@ void	ft_afficher(t_head *a, t_head *b)
 
 	tmp_a = a->beg;
 	tmp_b = b->beg;
+	ft_printf(RED"Stack A: "EOC);
 	while (tmp_a)
 	{
 		ft_printf("%d ", tmp_a->nbr);
@@ -31,6 +33,7 @@ void	ft_afficher(t_head *a, t_head *b)
 		tmp_a = tmp_a->next;
 	}
 	ft_printf("\n");
+	ft_printf(RED"Stack B: "EOC);
 	while (tmp_b)
 	{
 		ft_printf("%d ", tmp_b->nbr);
@@ -53,7 +56,7 @@ int	main(int ac, char **av)
 	{
 		if ((ft_set_stack(&a, &b, av)) == 0)
 			return (0);
-		while (get_next_line(0, &tab) > 0)
+		while (get_next_line2(0, &tab) > 0)
 		{
 			if ((ft_do_opperations(a, b, tab, 0)) == 0)
 				return (0);
@@ -62,13 +65,11 @@ int	main(int ac, char **av)
 		if ((ft_is_sort(a, b)) == ERROR)
 		{
 			ft_write_sort(ERROR);
-			ft_afficher(a, b);
-			//ft_free_op(&a, &b);
+			ft_free_op(&a, &b);
 			return (0);
 		}
 		ft_write_sort(GOOD);
-		ft_afficher(a, b);
-		//ft_free_op(&a, &b);
+		ft_free_op(&a, &b);
 	}
 	return (0);
 }

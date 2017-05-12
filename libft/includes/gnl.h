@@ -3,29 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 15:52:53 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/14 16:28:36 by afourcad         ###   ########.fr       */
+/*   Created: 2016/08/06 14:48:13 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/08/06 14:48:15 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# include "libft.h"
-
+#ifndef G_N_L_H
+# define G_N_L_H
 # define BUFF_SIZE 1
-# define EOL '\n'
 
-typedef struct	s_buff
-{
-	char	buff[BUFF_SIZE];
-	int		eol;
-	int		ret;
-	int		size_line;
-}				t_buff;
-
-int				get_next_line(const int fd, char **line);
+int		get_next_line2(int const fd, char **line);
+int		get_line_len(int const fd, char **dst);
+int		checknewline(char *s);
+char	*del_line(char *s, int i);
+char	*ft_strjoin2(char *s1, char *s2);
 
 #endif

@@ -19,7 +19,7 @@ int	ft_is_sort(t_head *a, t_head *b)
 	t_stack	*tmp;
 
 	tmp = a->beg;
-	if (b->beg != NULL)
+	if (b != NULL && b->beg != NULL)
 		return (ERROR);
 	if (a->beg != NULL)
 	{

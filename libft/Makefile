@@ -20,7 +20,7 @@ OBJLIBDIR	= objs
 
 INCDIR		= includes
 
-INCNAM = ft_printf.h libft.h get_next_line.h
+INCNAM = ft_printf.h libft.h get_next_line.h gnl.h
 INC = $(INCNAM:%=$(INCDIR)/%)
 
 SRCNAM	= ft_printf.c ft_check_params.c ft_check_specifier.c ft_digit_len.c\
@@ -53,7 +53,7 @@ LIBFTNAM	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strtab.c\
 	  ft_bzerocustom.c ft_setcustomtab.c ft_memadd.c ft_base_digitlen.c\
 	  ft_utf8_len.c ft_uitoa.c ft_abs.c ft_itoa_base.c ft_print_bit.c\
-	  ft_strfree.c get_next_line.c
+	  ft_strfree.c get_next_line.c gnl.c
 
 GIT	= README.md
 

@@ -45,6 +45,8 @@ void	ft_push(t_head *lst1, t_head *lst2, char *str, int i)
 			lst1->beg->prev = lst1->end;
 			lst1->end->next = lst1->beg;
 		}
+		lst1->size -= 1;
+		lst2->size += 1;
 	}
 	if (i && str)
 		ft_printf("%s\n", str);

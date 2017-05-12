@@ -41,6 +41,8 @@ char	*ft_find_flags(char *str);
 void	ft_free_op(t_head **a, t_head **b);
 void	ft_afficher(t_head *a, t_head *b);
 int		ft_find_operations(t_head *a, t_head *b, char *flags);
+int		ft_find_operations2(t_head *a, t_head *b, char *flags);
 int		ft_write_sort(int i);
+int		ft_only_pa(t_head *a, t_head *b, char *flags);
 
 #endif

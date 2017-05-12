@@ -23,4 +23,11 @@
 # define B2 b->beg->next->nbr
 # define Z2 b->end->nbr
 
+typedef struct	s_min
+{
+	int	min;
+	int	next;
+	int	is_min;
+	int is_next;
+}				t_min;
 #endif
