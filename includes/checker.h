@@ -36,6 +36,7 @@ void	ft_rotate(t_head *lst1, t_head *lst2, char *str, int i);
 void	ft_r_rotate(t_head *lst1, t_head *lst2, char *str, int i);
 int		ft_do_opperations(t_head *a, t_head *b, char *tab, int i);
 int		ft_error(void);
+int		ft_is_partial_sort(t_head *a, t_head *b, char *flags);
 int		ft_is_sort(t_head *a, t_head *b);
 char	*ft_find_flags(char *str);
 void	ft_free_op(t_head **a, t_head **b);

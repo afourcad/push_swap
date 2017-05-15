@@ -44,6 +44,8 @@ char	*ft_find_flags(char *str)
 	if (str[i] == '-')
 	{
 	flags = ft_strnew(2);
+		if (ft_atoi(str) != 0)
+			return (NULL);
 		while (str[++i])
 		{
 			if (str[i] == 'v')

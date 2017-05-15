@@ -17,7 +17,6 @@
 
 int	ft_only_pa(t_head *a, t_head *b, char *flags)
 {
-(void)flags;
 	while (b->beg != NULL)
 	{
 		if (A2 > B2 || b->beg == b->end)
@@ -32,6 +31,8 @@ int	ft_only_pa(t_head *a, t_head *b, char *flags)
 
 int	ft_find_operations(t_head *a, t_head *b, char *flags)
 {
+	if (ft_is_partial_sort(a, b, flags))
+		return (GOOD);
 	if (ft_is_sort(a, b) == GOOD)
 		return (GOOD);
 	if (a->beg == NULL || a->beg == a->end)
