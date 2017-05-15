@@ -67,21 +67,28 @@ int		ft_check_if_num(char *str)
 int		ft_no_duplicate(t_head *head)
 {
 	t_stack	*tmp;
+	t_stack	*tmp2;
+	int		i;
+	int		j;
 
 	tmp = head->beg;
+	i = 0;
 	if (head->beg == head->end)
 		return (1);
-	if (tmp->nbr < INT_MIN || tmp->nbr > INT_MAX)
-		return (ft_error());
-	tmp = tmp->next;
-	while (tmp)
+	while (i < head->size)
 	{
-		if (tmp->nbr == tmp->prev->nbr
+		j = i + 1;
+		tmp2 = tmp->next;
+		while (j < head->size)
+		{
+			if (tmp->nbr == tmp2->nbr
 				|| tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
-			return (ft_error());
+				return (ft_error());
+			tmp2 = tmp2->next;
+			++j;
+		}
 		tmp = tmp->next;
-		if (tmp == head->end)
-			break;
+		++i;
 	}
 	return (1);
 }
