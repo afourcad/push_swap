@@ -10,5 +10,6 @@ void	ft_str_multi_free(char ***str)
 		free((*str)[i]);
 		++i;
 	}
+	free(*str);
 	*str = NULL;
 }
