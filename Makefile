@@ -23,7 +23,7 @@ SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c \
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-CC		= clang
+CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBINCDIR)
 LDFLAGS	= -L $(LIBFTDIR) -lft
 

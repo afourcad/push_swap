@@ -36,7 +36,7 @@ OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 OBJ_LIB = $(SRC_LIB:$(LIBDIR)/%.c=$(OBJLIBDIR)/%.o)
 
 
-CC		= clang
+CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -I$(INCDIR)
 
 LIBFTNAM	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
@@ -53,7 +53,7 @@ LIBFTNAM	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strtab.c\
 	  ft_bzerocustom.c ft_setcustomtab.c ft_memadd.c ft_base_digitlen.c\
 	  ft_utf8_len.c ft_uitoa.c ft_abs.c ft_itoa_base.c ft_print_bit.c\
-	  ft_strfree.c get_next_line.c gnl.c
+	  ft_strfree.c ft_str_multi_free.c get_next_line.c gnl.c
 
 GIT	= README.md
 

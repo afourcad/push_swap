@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <stdint.h>
+# include <wchar.h>
 # include <unistd.h>
 # include <ctype.h>
 # include <sys/types.h>
@@ -53,6 +55,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strdup(const char *s);
 char				*ft_strnew(size_t size);
 void				ft_strclr(char *s);
+void				ft_str_multi_free(char ***str);
 void				ft_strfree(char **str);
 void				ft_strdel(char **as);
 char				**ft_strtab(int i, int j);

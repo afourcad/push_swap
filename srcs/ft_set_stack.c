@@ -129,7 +129,7 @@ int		ft_set_stack(t_head **a, t_head **b, char **av)
 				return (0);
 			++tmp;
 		}
-		//ft_strfree(*tmp); bug complet lololololol
+		ft_str_multi_free(&tmp);
 	}
 	if (ft_no_duplicate(*a) == 0)
 		return (0);
