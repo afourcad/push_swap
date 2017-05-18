@@ -14,6 +14,26 @@
 #include "checker.h"
 #include "ft_printf.h"
 
+int		ft_check_if_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[0] == '-' || str[0] == '+')
+	{
+		if (ft_isdigit(str[1]) != 1)
+			return (ft_error());
+		++i;
+	}
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) != 1)
+			return (ft_error());
+		++i;
+	}
+	return (1);
+}
+
 int		ft_add_stack(t_head *head, char *str)
 {
 	t_stack	*elem;
@@ -31,7 +51,7 @@ int		ft_add_stack(t_head *head, char *str)
 	return(1);
 }
 
-void	ft_init_stack(t_head *a, char *nbr)
+int		ft_init_stack(t_head *a, char *nbr)
 {
 	t_stack	*elem;
 
@@ -40,27 +60,11 @@ void	ft_init_stack(t_head *a, char *nbr)
 	a->end = elem;
 	elem->next = elem;
 	elem->prev = elem;
-	if (nbr)
+	if (nbr && ft_check_if_num(nbr))
 		elem->nbr = ft_atoi(nbr);
+	else
+		return (0);
 	a->size = 1;
-}
-
-int		ft_check_if_num(char *str)
-{
-	int	i;
-
-	i = -1;
-	if (str[0] == '-' || str[0] == '+')
-	{
-		if (ft_isdigit(str[1]) != 1)
-			return (ft_error());
-		++i;
-	}
-	while (str[++i])
-	{
-		if (ft_isdigit(str[i]) != 1)
-			return (ft_error());
-	}
 	return (1);
 }
 
@@ -110,28 +114,27 @@ int		ft_set_stack(t_head **a, t_head **b, char **av)
 	int		i;
 	char	**tmp;
 
-	i = 0;
 	tmp = NULL;
 	ft_init_head(a, b);
-	while (av[++i])
+	while (*(++av))
 	{
+		i = 0;
 		tmp = ft_strsplit(av[i], ' ');
 		if ((*a)->end ==  NULL)
 		{
-			ft_init_stack(*a, *tmp);
-			++tmp;
+			if (!ft_init_stack(*a, tmp[i]))
+				return (ft_free_all(a, b, &tmp));
+			++i;
 		}
-		while (*tmp)
+		while (tmp[i] != NULL)
 		{
-			if ((ft_check_if_num(*tmp)) == 0)
-				return (0);
-			if ((ft_add_stack(*a, *tmp)) == 0)
-				return (0);
-			++tmp;
+			if (!ft_check_if_num(tmp[i]) || !ft_add_stack(*a, tmp[i]))
+				return (ft_free_all(a, b, &tmp));
+			++i;
 		}
 		ft_str_multi_free(&tmp);
 	}
 	if (ft_no_duplicate(*a) == 0)
-		return (0);
+		return (ft_free_op(a, b));
 	return (1);
 }

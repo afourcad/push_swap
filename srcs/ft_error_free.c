@@ -15,7 +15,7 @@
 #include "checker.h"
 #include "push_swap.h"
 
-void	ft_free_op(t_head **a, t_head **b)
+int	ft_free_op(t_head **a, t_head **b)
 {
 	while ((*a)->beg != (*a)->end)
 	{
@@ -26,6 +26,14 @@ void	ft_free_op(t_head **a, t_head **b)
 	free(*a);
 	if (b)
 		ft_free_op(b, NULL);
+	return (0);
+}
+
+int	ft_free_all(t_head **a, t_head **b, char ***tmp)
+{
+	ft_free_op(a, b);
+	ft_str_multi_free(tmp);
+	return (0);
 }
 
 int		ft_error(void)
@@ -43,7 +51,7 @@ char	*ft_find_flags(char *str)
 	flags = NULL;
 	if (str[i] == '-')
 	{
-	flags = ft_strnew(2);
+		flags = ft_strnew(2);
 		if (ft_atoi(str) != 0)
 			return (NULL);
 		while (str[++i])
@@ -54,11 +62,10 @@ char	*ft_find_flags(char *str)
 				FLG_C = 1;
 			else
 			{
-				ft_printf("./push_swap:  usage: [-vc] [numbers ...]\n");
+				ft_printf("./push_swap: usage: [-vc] [numbers ...]\n");
 				return (NULL);
 			}
 		}
 	}
 	return (flags);
 }
-

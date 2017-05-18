@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "libft.h"
 
 void	ft_str_multi_free(char ***str)
 {
@@ -7,7 +8,7 @@ void	ft_str_multi_free(char ***str)
 	i = 0;
 	while ((*str)[i])
 	{
-		free((*str)[i]);
+		ft_strdel(&((*str)[i]));
 		++i;
 	}
 	free(*str);
