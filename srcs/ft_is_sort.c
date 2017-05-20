@@ -45,23 +45,20 @@ int ft_partial_sort(t_head *a, t_head *b, char *flags)
 		{
 			ft_do_opperations(a, b, "rra", 1);
 			if (flags && FLG_V)
-				ft_afficher(a, b);
+				ft_afficher(a, b, flags);
 			++i;
 		}
 	ft_do_opperations(a, b, "sa", 1);
-	if (flags && FLG_V)
-		ft_afficher(a, b);
+	ft_afficher(a, b, flags);
 	i = 0;
 	if (a->size > 2)
 		while (i < 2)
 		{
 			ft_do_opperations(a, b, "ra", 1);
-			if (flags && FLG_V)
-				ft_afficher(a, b);
+			ft_afficher(a, b, flags);
 			++i;
 		}
-	if (b->beg != NULL)
-		ft_only_pa(a, b, flags);
+	ft_only_pa(a, b, flags);
 	return (GOOD);
 }
 
@@ -90,9 +87,7 @@ int	ft_is_partial_sort(t_head *a, t_head *b, char *flags)
 		}
 		if (unsort == 1 && a->beg && a->end && a->beg != a->end
 				&& Z1 < a->end->prev->nbr)
-			{
 			return (ft_partial_sort(a, b, flags));
-			}
 	}
 	return (ERROR);
 }

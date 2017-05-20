@@ -14,26 +14,6 @@
 #include "checker.h"
 #include "ft_printf.h"
 
-int		ft_check_if_num(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[0] == '-' || str[0] == '+')
-	{
-		if (ft_isdigit(str[1]) != 1)
-			return (ft_error());
-		++i;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]) != 1)
-			return (ft_error());
-		++i;
-	}
-	return (1);
-}
-
 int		ft_add_stack(t_head *head, char *str)
 {
 	t_stack	*elem;
@@ -68,54 +48,12 @@ int		ft_init_stack(t_head *a, char *nbr)
 	return (1);
 }
 
-int		ft_no_duplicate(t_head *head)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-	int		i;
-	int		j;
-
-	tmp = head->beg;
-	i = 0;
-	if (head->beg == head->end)
-		return (1);
-	while (i < head->size)
-	{
-		j = i + 1;
-		tmp2 = tmp->next;
-		while (j < head->size)
-		{
-			if (tmp->nbr == tmp2->nbr
-				|| tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
-				return (ft_error());
-			tmp2 = tmp2->next;
-			++j;
-		}
-		tmp = tmp->next;
-		++i;
-	}
-	return (1);
-}
-
-void	ft_init_head(t_head **a, t_head **b)
-{
-	*a = malloc(sizeof(t_head));
-	*b = malloc(sizeof(t_head));
-	(*a)->end = NULL;
-	(*a)->beg = NULL;
-	(*b)->end = NULL;
-	(*b)->beg = NULL;
-	(*a)->size = 0;
-	(*b)->size = 0;
-}
-
 int		ft_set_stack(t_head **a, t_head **b, char **av)
 {
 	int		i;
 	char	**tmp;
 
 	tmp = NULL;
-	ft_init_head(a, b);
 	while (*(++av))
 	{
 		i = 0;

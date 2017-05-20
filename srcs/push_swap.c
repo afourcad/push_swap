@@ -16,7 +16,19 @@
 #include "checker.h"
 #include "push_swap.h"
 
-void	ft_afficher(t_head *a, t_head *b)
+void	ft_init_head(t_head **a, t_head **b)
+{
+	*a = malloc(sizeof(t_head));
+	*b = malloc(sizeof(t_head));
+	(*a)->end = NULL;
+	(*a)->beg = NULL;
+	(*b)->end = NULL;
+	(*b)->beg = NULL;
+	(*a)->size = 0;
+	(*b)->size = 0;
+}
+
+void	ft_afficher(t_head *a, t_head *b, char *flags)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -25,6 +37,8 @@ void	ft_afficher(t_head *a, t_head *b)
 	tmp_a = a->beg;
 	tmp_b = b->beg;
 	i = 0;
+	if (!flags || !FLG_V)
+		return ;
 	ft_printf(RED"Stack A: "EOC);
 	while (i++ < a->size)
 	{
@@ -53,6 +67,7 @@ int	main(int ac, char **av)
 	flags = NULL;
 	if (ac > 1)
 	{
+		ft_init_head(&a, &b);
 		if ((flags = ft_find_flags(av[1])) != NULL)
 			++av;
 		if ((ft_set_stack(&a, &b, av)) == 0)
