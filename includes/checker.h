@@ -40,6 +40,7 @@ void	ft_r_rotate(t_head *lst1, t_head *lst2, char *str, int i);
 int		ft_do_opperations(t_head *a, t_head *b, char *tab, int i);
 int		ft_only_pa(t_head *a, t_head *b, char *flags);
 
+void	ft_init_head(t_head **a, t_head **b);
 int		ft_error(void);
 int		ft_is_partial_sort(t_head *a, t_head *b, char *flags);
 int		ft_is_sort(t_head *a, t_head *b);

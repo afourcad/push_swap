@@ -69,3 +69,15 @@ char	*ft_find_flags(char *str)
 	}
 	return (flags);
 }
+
+void	ft_init_head(t_head **a, t_head **b)
+{
+	*a = malloc(sizeof(t_head));
+	*b = malloc(sizeof(t_head));
+	(*a)->end = NULL;
+	(*a)->beg = NULL;
+	(*b)->end = NULL;
+	(*b)->beg = NULL;
+	(*a)->size = 0;
+	(*b)->size = 0;
+}

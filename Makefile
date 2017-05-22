@@ -17,7 +17,7 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c \
+SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c ft_visual.c\
 		  ft_error_free.c ft_algo1.c ft_algo2.c ft_check_stack.c\
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
@@ -75,7 +75,7 @@ clean:
 	$(MAKE) -C $(LIBFTDIR) clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(NAME2)
 	$(MAKE) -C $(LIBFTDIR) fclean
 
 # $(MAKE) needed so that the cleaning is done before starting to create again \
