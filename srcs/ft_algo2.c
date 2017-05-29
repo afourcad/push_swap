@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:13:50 by afourcad          #+#    #+#             */
-/*   Updated: 2017/05/11 18:09:36 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/05/29 15:49:58 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,6 +21,7 @@ int		ft_or_for(t_head *a, t_min *min, int m)
 	t_stack	*tmp;
 
 	i = 0;
+	n = 0;
 	tmp = a->beg;
 	while (i++ < a->size)
 	{
