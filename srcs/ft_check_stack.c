@@ -39,7 +39,7 @@ int		ft_no_duplicate(t_head *head)
 		while (j < head->size)
 		{
 			if (tmp->nbr == tmp2->nbr
-				|| tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
+				|| tmp2->nbr > INT_MAX || tmp2->nbr < INT_MIN)
 				return (ft_error());
 			tmp2 = tmp2->next;
 			++j;
