@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:40:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/21 19:19:02 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:47:38 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CHECKER_H
@@ -29,6 +29,7 @@ typedef	struct	s_head
 }				t_head;
 
 int		ft_set_stack(t_head **a, t_head **b, char **av);
+int		ft_set_tab(t_head *head, int **tab);
 int		ft_add_stack(t_head *head, char *str);
 int		ft_no_duplicate(t_head *head);
 int		ft_check_if_num(char *str);

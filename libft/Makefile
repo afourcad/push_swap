@@ -6,7 +6,7 @@
 #    By: afourcad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 20:03:40 by afourcad          #+#    #+#              #
-#    Updated: 2017/04/14 18:43:21 by afourcad         ###   ########.fr        #
+#    Updated: 2017/06/07 19:29:36 by afourcad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ LIBFTNAM	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strtab.c\
 	  ft_bzerocustom.c ft_setcustomtab.c ft_memadd.c ft_base_digitlen.c\
 	  ft_utf8_len.c ft_uitoa.c ft_abs.c ft_itoa_base.c ft_print_bit.c\
-	  ft_strfree.c ft_str_multi_free.c get_next_line.c gnl.c
+	  ft_strfree.c ft_str_multi_free.c get_next_line.c gnl.c\
+	  ft_quick_sort_tab.c\
 
 GIT	= README.md
 

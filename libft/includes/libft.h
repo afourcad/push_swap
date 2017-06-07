@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:55:49 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/19 16:53:15 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/07 18:53:42 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char				*ft_uitoa(uintmax_t n);
 int					ft_base_digitlen(uintmax_t nbr, int base);
 int					ft_utf8_len(uintmax_t nbr);
 uintmax_t			ft_abs(intmax_t nbr);
+void				ft_quick_sort_tab(int *tab, int min, int max);
 
 /*
 ** Affichage.
