@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:27:39 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/21 19:10:54 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/13 17:21:27 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_add_stack(t_head *head, char *str)
 	head->end->next = head->beg;
 	if (str)
 		elem->nbr = ft_atoi(str);
+	elem->grp = 0;
 	head->size += 1;
 	return(1);
 }
@@ -40,6 +41,7 @@ int		ft_init_stack(t_head *a, char *nbr)
 	a->end = elem;
 	elem->next = elem;
 	elem->prev = elem;
+	elem->grp = 0;
 	if (nbr && ft_check_if_num(nbr))
 		elem->nbr = ft_atoi(nbr);
 	else
