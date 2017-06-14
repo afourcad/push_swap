@@ -6,7 +6,7 @@
 #    By: afourcad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 20:03:40 by afourcad          #+#    #+#              #
-#    Updated: 2017/06/07 19:45:35 by afourcad         ###   ########.fr        #
+#    Updated: 2017/06/14 17:53:05 by afourcad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INCDIR	= includes
 
 SRCNAM	= ft_operations.c ft_set_stack.c ft_is_sort.c ft_visual.c\
 		  ft_error_free.c ft_algo1.c ft_algo2.c ft_check_stack.c\
-		  ft_set_tab.c\
+		  ft_set_tab.c ft_algo3.c ft_algo3_B.c\
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

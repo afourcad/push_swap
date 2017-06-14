@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 16:29:57 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/20 16:38:16 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/14 19:22:46 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define Z1 a->end->nbr
 # define A2 b->beg->nbr
 # define B2 b->beg->next->nbr
+# define C2 b->beg->next->next->nbr
 # define Z2 b->end->nbr
 
 typedef struct	s_min
@@ -30,4 +31,5 @@ typedef struct	s_min
 	int	is_min;
 	int is_next;
 }				t_min;
+
 #endif

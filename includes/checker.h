@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:40:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/08 16:39:52 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/14 19:53:23 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CHECKER_H
@@ -29,8 +29,16 @@ typedef	struct	s_head
 	int		size;
 }				t_head;
 
+typedef struct	s_tab
+{
+	int	*tab;
+	int	size;
+	int	grp;
+	int	rra;
+}				t_tab;
+
 int		ft_set_stack(t_head **a, t_head **b, char **av);
-int		ft_set_tab(t_head *head, int **tab);
+int		ft_set_tab(t_head *head, t_tab *tab);
 int		ft_add_stack(t_head *head, char *str);
 int		ft_no_duplicate(t_head *head);
 int		ft_check_if_num(char *str);
@@ -55,6 +63,9 @@ void	ft_afficher(t_head *a, t_head *b, char *flags);
 
 int		ft_find_operations(t_head *a, t_head *b, char *flags);
 int		ft_find_operations2(t_head *a, t_head *b, char *flags);
+int		ft_algo3(t_head *a, t_head *b, char *flags);
+void	ft_algo3_B(t_head *a, t_head *b, char *flags);
+int		ft_size_grp(t_head *head, t_tab *tab);
 int		ft_write_sort(int i);
 
 #endif
