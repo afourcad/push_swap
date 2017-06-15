@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 19:33:48 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/14 20:43:00 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/15 17:22:54 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,20 @@
 int	ft_size_grp(t_head *head, t_tab *tab)
 {
 	t_stack	*tmp;
+	int		i;
 
-	if (head->beg && (head->beg->grp == 0 || head->beg->grp == 2))
-	{
-		tab->grp = head->beg->grp == 0 ? 0 : 2;
-		tab->size = head->size;
-		return (tab->size);
-	}
-	else if (head->beg)
+	i = 0;
+	if (head->beg)
 		tab->grp = head->beg->grp;
 	else
 		return (0);
 	tab->size = 0;
 	tmp = head->beg;
-	while (tmp->grp == tab->grp)
+	while (tmp->grp == tab->grp && i < head->size)
 	{
-		write(1, "yo\n", 3);
 		++(tab->size);
 		tmp = tmp->next;
+		++i;
 	}
 	return (tab->size);
 }

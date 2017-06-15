@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 16:29:57 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/14 19:22:46 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/15 18:24:11 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define A1 a->beg->nbr
 # define B1 a->beg->next->nbr
+# define C1 a->beg->next->next->nbr
 # define Z1 a->end->nbr
 # define A2 b->beg->nbr
 # define B2 b->beg->next->nbr

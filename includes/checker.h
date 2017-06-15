@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:40:07 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/14 19:53:23 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/15 18:42:55 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CHECKER_H
@@ -42,6 +42,9 @@ int		ft_set_tab(t_head *head, t_tab *tab);
 int		ft_add_stack(t_head *head, char *str);
 int		ft_no_duplicate(t_head *head);
 int		ft_check_if_num(char *str);
+
+void	ft_sort_b(t_head *a, t_head *b, int *size, char *flags);
+void	ft_small_size(t_head *a, t_head *b, int *size, char *flags);
 
 void	ft_swap(t_head *lst1, t_head *lst2, char *str, int i);
 void	ft_push(t_head *lst1, t_head *lst2, char *str, int i);

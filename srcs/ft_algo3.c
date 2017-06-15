@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 19:30:24 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/14 20:35:22 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/15 19:54:09 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,34 @@
 #include "push_swap.h"
 #include "ft_printf.h"
 
+void	ft_size_tree_or_two(t_head *a, t_head *b, char *flags, int size_grp)
+{
+	if (size_grp == 2)
+	{
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+		ft_small_size(a, b, &size_grp, flags);
+	}
+	else
+	{
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+		ft_sort_b(a, b, &size_grp, flags);
+	}
+}
+
 void	ft_sort_A(t_head *a, t_head *b, t_tab *tab, char *flags)
 {
 	int	i;
 
 	i = 0;
-	while ((tab->tab[i]) && (tab->tab)[i] == a->beg->nbr)
+	while (i < tab->size && (tab->tab)[i] == a->beg->nbr)
 	{
 		ft_do_opperations(a, NULL, "ra", 1);
 		ft_afficher(a, b, flags);
@@ -32,7 +54,7 @@ void	ft_ra_back(t_head *a, t_head *b, t_tab *tab, char *flags)
 {
 	if (tab->grp == 0)
 		return ;
-	else if ((tab->size - tab->rra) < tab->rra)
+	else if ((a->size - tab->rra) < tab->rra)
 		while (tab->size)
 		{
 			ft_do_opperations(a, NULL, "ra", 1);
@@ -76,14 +98,24 @@ void	ft_divide_in_a(t_head *a, t_head *b, t_tab *tab, char *flags)
 int	ft_algo3(t_head *a, t_head *b, char *flags)
 {
 	t_tab	tab;
+	int		size_grp;
 
 	while (!ft_is_sort(a, b))
 	{
-		ft_size_grp(a, &tab);
-		ft_set_tab(a, &tab); //trier un tab de taille ci dessus
-		ft_divide_in_a(a, b, &tab, flags);//diviser avec la taille ci dessus
-		ft_sort_A(a, b, &tab, flags);
-		free(tab.tab);
+		if ((size_grp = ft_size_grp(a, &tab)) < 4)
+		{
+			ft_size_tree_or_two(a, b, flags, size_grp);
+			ft_set_tab(a, &tab); //trier un tab de taille ci dessus
+			ft_sort_A(a, b, &tab, flags);
+		}
+		else
+		{
+			ft_set_tab(a, &tab); //trier un tab de taille ci dessus
+			ft_divide_in_a(a, b, &tab, flags);//diviser avec la taille ci dessus
+			ft_sort_A(a, b, &tab, flags);
+		}
+			free(tab.tab);
+			tab.tab = NULL;
 	}
 	return (GOOD);
 }
