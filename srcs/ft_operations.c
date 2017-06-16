@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_operations.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/16 16:22:23 by afourcad          #+#    #+#             */
+/*   Updated: 2017/06/16 16:23:00 by afourcad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "checker.h"
 #include "ft_printf.h"
@@ -57,7 +69,7 @@ void	ft_rotate(t_head *lst1, t_head *lst2, char *str, int i)
 	if (lst1->beg && lst1->beg != lst1->end)
 	{
 		lst1->beg = lst1->beg->next;
-		lst1->end  = lst1->end->next;
+		lst1->end = lst1->end->next;
 	}
 	if (lst2)
 		ft_rotate(lst2, NULL, NULL, 0);

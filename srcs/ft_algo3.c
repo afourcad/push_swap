@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 19:30:24 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/15 19:54:09 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:16:42 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_size_tree_or_two(t_head *a, t_head *b, char *flags, int size_grp)
 	}
 }
 
-void	ft_sort_A(t_head *a, t_head *b, t_tab *tab, char *flags)
+void	ft_sort_a(t_head *a, t_head *b, t_tab *tab, char *flags)
 {
 	int	i;
 
@@ -92,10 +92,10 @@ void	ft_divide_in_a(t_head *a, t_head *b, t_tab *tab, char *flags)
 		ft_afficher(a, b, flags);
 	}
 	ft_ra_back(a, b, tab, flags);
-	ft_algo3_B(a, b, flags);
+	ft_algo3_b(a, b, flags);
 }
 
-int	ft_algo3(t_head *a, t_head *b, char *flags)
+int		ft_algo3(t_head *a, t_head *b, char *flags)
 {
 	t_tab	tab;
 	int		size_grp;
@@ -105,17 +105,17 @@ int	ft_algo3(t_head *a, t_head *b, char *flags)
 		if ((size_grp = ft_size_grp(a, &tab)) < 4)
 		{
 			ft_size_tree_or_two(a, b, flags, size_grp);
-			ft_set_tab(a, &tab); //trier un tab de taille ci dessus
-			ft_sort_A(a, b, &tab, flags);
+			ft_set_tab(a, &tab);
+			ft_sort_a(a, b, &tab, flags);
 		}
 		else
 		{
-			ft_set_tab(a, &tab); //trier un tab de taille ci dessus
-			ft_divide_in_a(a, b, &tab, flags);//diviser avec la taille ci dessus
-			ft_sort_A(a, b, &tab, flags);
+			ft_set_tab(a, &tab);
+			ft_divide_in_a(a, b, &tab, flags);
+			ft_sort_a(a, b, &tab, flags);
 		}
-			free(tab.tab);
-			tab.tab = NULL;
+		free(tab.tab);
+		tab.tab = NULL;
 	}
 	return (GOOD);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/06 14:48:13 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/08/06 14:48:15 by tsanzey          ###   ########.fr       */
+/*   Created: 2017/06/16 16:06:05 by afourcad          #+#    #+#             */
+/*   Updated: 2017/06/16 16:06:07 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef G_N_L_H
-# define G_N_L_H
+#ifndef GNL_H
+# define GNL_H
 # define BUFF_SIZE 1
 
 int		get_next_line2(int const fd, char **line);

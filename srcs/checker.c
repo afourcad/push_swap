@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 17:12:19 by afourcad          #+#    #+#             */
-/*   Updated: 2017/05/29 18:26:50 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:11:51 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,9 @@ int	main(int ac, char **av)
 				return (0);
 			free(tab);
 		}
-		if ((ft_is_sort(a, b)) == ERROR)
-		{
-			ft_write_sort(ERROR);
-			ft_free_op(&a, &b);
-			return (0);
-		}
-		ft_write_sort(GOOD);
+		ft_write_sort(ft_is_sort(a, b));
 		ft_free_op(&a, &b);
+		return (0);
 	}
 	return (0);
 }

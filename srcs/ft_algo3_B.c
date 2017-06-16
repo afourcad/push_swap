@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/14 17:52:41 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/15 18:43:42 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:14:30 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_sort_b(t_head *a, t_head *b, int *size, char *flags)
 		--(*size);
 		ft_afficher(a, b, flags);
 	}
-	else 
+	else
 	{
 		ft_do_opperations(a, b, "sb", 1);
 		ft_afficher(a, b, flags);
@@ -85,7 +85,7 @@ void	ft_devide_in_b(t_head *a, t_head *b, t_tab *tab, char *flags)
 	}
 }
 
-void	ft_algo3_B(t_head *a, t_head *b, char *flags)
+void	ft_algo3_b(t_head *a, t_head *b, char *flags)
 {
 	t_tab	tab;
 

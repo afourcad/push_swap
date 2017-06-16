@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/16 16:19:17 by afourcad          #+#    #+#             */
+/*   Updated: 2017/06/16 16:20:14 by afourcad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "checker.h"
 #include "push_swap.h"
@@ -12,7 +24,7 @@ int	ft_write_sort(int i)
 	}
 	else
 		write(1, "OK\n", 3);
-		return (1);
+	return (1);
 }
 
 int	ft_is_sort(t_head *a, t_head *b)
@@ -35,7 +47,7 @@ int	ft_is_sort(t_head *a, t_head *b)
 	return (GOOD);
 }
 
-int ft_partial_sort(t_head *a, t_head *b, char *flags)
+int	ft_partial_sort(t_head *a, t_head *b, char *flags)
 {
 	int	i;
 
@@ -61,7 +73,6 @@ int ft_partial_sort(t_head *a, t_head *b, char *flags)
 	ft_only_pa(a, b, flags);
 	return (GOOD);
 }
-
 
 int	ft_is_partial_sort(t_head *a, t_head *b, char *flags)
 {

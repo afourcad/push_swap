@@ -6,7 +6,7 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:25:38 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/21 16:27:12 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:15:25 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "checker.h"
 #include "push_swap.h"
 
-int	ft_free_op(t_head **a, t_head **b)
+int		ft_free_op(t_head **a, t_head **b)
 {
 	while ((*a)->beg != (*a)->end)
 	{
@@ -29,7 +29,7 @@ int	ft_free_op(t_head **a, t_head **b)
 	return (0);
 }
 
-int	ft_free_all(t_head **a, t_head **b, char ***tmp)
+int		ft_free_all(t_head **a, t_head **b, char ***tmp)
 {
 	ft_free_op(a, b);
 	ft_str_multi_free(tmp);

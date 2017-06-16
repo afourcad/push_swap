@@ -6,9 +6,10 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:40:25 by afourcad          #+#    #+#             */
-/*   Updated: 2017/04/14 18:51:35 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:07:08 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdlib.h>
 
 void	ft_strfree(char **str)

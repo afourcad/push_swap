@@ -6,9 +6,10 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:13:50 by afourcad          #+#    #+#             */
-/*   Updated: 2017/05/29 15:49:58 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/16 16:19:09 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 #include "checker.h"
 #include "push_swap.h"
@@ -26,7 +27,7 @@ int		ft_or_for(t_head *a, t_min *min, int m)
 	while (i++ < a->size)
 	{
 		if (tmp->nbr == min->next)
-			break;
+			break ;
 		++n;
 		tmp = tmp->next;
 	}
@@ -35,7 +36,6 @@ int		ft_or_for(t_head *a, t_min *min, int m)
 	min->is_next = abs(n) < abs(m) ? 0 : 1;
 	min->is_min = abs(n) < abs(m) ? 1 : 0;
 	return (abs(m) <= abs(n) ? m : n);
-
 }
 
 int		ft_back_or_for(t_head *a, t_min *min)
@@ -52,7 +52,7 @@ int		ft_back_or_for(t_head *a, t_min *min)
 	while (i++ < a->size)
 	{
 		if (tmp->nbr == min->min)
-			break;
+			break ;
 		++m;
 		tmp = tmp->next;
 	}
@@ -88,38 +88,40 @@ void	ft_find_min(t_head *a, t_min *min)
 
 void	ft_goal_operations(t_head *a, t_head *b, char *flags, int *goal)
 {
-		if (*goal == 1)
+	if (*goal == 1)
+	{
+		ft_do_opperations(a, b, "sa", 1);
+		--(*goal);
+		ft_afficher(a, b, flags);
+	}
+	else if (*goal > 0)
+		while (*goal > 0)
 		{
-			ft_do_opperations(a, b, "sa", 1);
+			ft_do_opperations(a, b, "ra", 1);
 			--(*goal);
 			ft_afficher(a, b, flags);
 		}
-		else if (*goal > 0)
-			while (*goal > 0)
-			{
-				ft_do_opperations(a, b, "ra", 1);
-				--(*goal);
-				ft_afficher(a, b, flags);
-			}
-		else if (*goal < 0)
-			while (*goal < 0)
-			{
-				ft_do_opperations(a, b, "rra", 1);
-				++(*goal);
-				ft_afficher(a, b, flags);
-			}
-		if (*goal == 0 && ((b->beg && A1 < A2) || ft_is_sort(a, NULL) != GOOD))
+	else if (*goal < 0)
+		while (*goal < 0)
 		{
-			ft_do_opperations(a, b, "pb", 1);
+			ft_do_opperations(a, b, "rra", 1);
+			++(*goal);
 			ft_afficher(a, b, flags);
 		}
+	if (*goal == 0 && ((b->beg && A1 < A2) || ft_is_sort(a, NULL) != GOOD))
+	{
+		ft_do_opperations(a, b, "pb", 1);
+		ft_afficher(a, b, flags);
+	}
 }
 
 int		ft_find_operations2(t_head *a, t_head *b, char *flags)
 {
-	t_min	min = {.is_min = 0, .is_next = 0};
-	int				goal;
+	t_min	min;
+	int		goal;
 
+	min.is_min = 0;
+	min.is_next = 0;
 	if (ft_is_partial_sort(a, b, flags))
 		return (GOOD);
 	ft_find_min(a, &min);
