@@ -6,12 +6,14 @@
 /*   By: afourcad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 16:12:44 by afourcad          #+#    #+#             */
-/*   Updated: 2017/06/16 16:12:46 by afourcad         ###   ########.fr       */
+/*   Updated: 2017/06/21 18:22:30 by afourcad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "checker.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 int		ft_check_if_num(char *str)
 {
@@ -51,7 +53,7 @@ int		ft_no_duplicate(t_head *head)
 		while (j < head->size)
 		{
 			if (tmp->nbr == tmp2->nbr
-				|| tmp2->nbr > INT_MAX || tmp2->nbr < INT_MIN)
+				|| tmp->nbr > INT_MAX || tmp->nbr < INT_MIN)
 				return (ft_error());
 			tmp2 = tmp2->next;
 			++j;
